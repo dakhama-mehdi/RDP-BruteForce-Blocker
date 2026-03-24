@@ -21,6 +21,7 @@ Status: Work in progress
 
 # Time in hours
 $hours = 10
+$IPCache = @{}
 
 # Convert to milliseconds
 $ms = [int](New-TimeSpan -Hours $hours).TotalMilliseconds
@@ -51,6 +52,35 @@ function Resolve-Status {
     }
 }
 
+function Get-IPLocation {
+    param($ip)
+
+    # Check cache first
+    if ($IPCache.ContainsKey($ip)) {
+        return $IPCache[$ip]
+    }
+
+    try {
+        $url = "http://ip-api.com/json/$ip"
+        $response = Invoke-RestMethod -Uri $url -Method Get -TimeoutSec 3
+
+        if ($response.status -eq "success") {
+            $location = "$($response.country) - $($response.city)"
+        }
+        else {
+            $location = "Unknown"
+        }
+    }
+    catch {
+        $location = "Error"
+    }
+
+    # Store in cache
+    $IPCache[$ip] = $location
+
+    return $location
+}
+
 # XPath filter
 $xpath = "*[System[(EventID=4625) and TimeCreated[timediff(@SystemTime) <= $ms]]] and *[EventData[Data[@Name='LogonType']='3']]"
 
@@ -74,6 +104,7 @@ $result = Get-WinEvent -FilterXPath $xpath -LogName Security | ForEach-Object {
         Date        = [datetime]$Event.System.TimeCreated.SystemTime
         Reason      = Resolve-Status $obj.SubStatus
         SubStatus   = $obj.SubStatus
+        Location  = Get-IPLocation $obj.IpAddress
         #ProcessName = $obj.LogonProcessName
         #Protocol    = $obj.AuthenticationPackageName
         #Status      = $obj.Status
