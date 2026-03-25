@@ -1,4 +1,5 @@
 ﻿
+
 <#
 .SYNOPSIS
 Detects potential brute force attempts from Windows Security logs.
@@ -55,7 +56,15 @@ function Resolve-Status {
 function Get-IPLocation {
     param($ip)
 
-    # Check cache first
+    # Skip local / empty
+    if (-not $ip -or $ip -eq '-' -or $ip -eq '::1' -or $ip -match "^(127\.|192\.168\.|10\.)") {
+        return [PSCustomObject]@{
+            Country = "Local"
+            City    = "Local"
+        }
+    }
+
+    # Cache check
     if ($IPCache.ContainsKey($ip)) {
         return $IPCache[$ip]
     }
@@ -65,14 +74,24 @@ function Get-IPLocation {
         $response = Invoke-RestMethod -Uri $url -Method Get -TimeoutSec 3
 
         if ($response.status -eq "success") {
-            $location = "$($response.country) - $($response.city)"
+
+            $location = [PSCustomObject]@{
+                Country = $response.country
+                City    = $response.city
+            }
         }
         else {
-            $location = "Unknown"
+            $location = [PSCustomObject]@{
+                Country = "Unknown"
+                City    = "Unknown"
+            }
         }
     }
     catch {
-        $location = "Error"
+        $location = [PSCustomObject]@{
+            Country = "Error"
+            City    = "Error"
+        }
     }
 
     # Store in cache
@@ -97,6 +116,8 @@ $result = Get-WinEvent -FilterXPath $xpath -LogName Security | ForEach-Object {
 
     $obj = [PSCustomObject]$data
 
+    $loc = Get-IPLocation $obj.IpAddress
+
     # Final object
     [PSCustomObject]@{
         UserName    = $obj.TargetUserName
@@ -104,12 +125,13 @@ $result = Get-WinEvent -FilterXPath $xpath -LogName Security | ForEach-Object {
         Date        = [datetime]$Event.System.TimeCreated.SystemTime
         Reason      = Resolve-Status $obj.SubStatus
         SubStatus   = $obj.SubStatus
-        Location  = Get-IPLocation $obj.IpAddress
-        #ProcessName = $obj.LogonProcessName
-        #Protocol    = $obj.AuthenticationPackageName
+        Country  = $loc.Country
+        City      = $loc.City
+        ProcessName = $obj.LogonProcessName
+        Protocol    = $obj.AuthenticationPackageName
         #Status      = $obj.Status
     }
 }
 
 # Display
-$result | Format-Table -AutoSize
+$result | Out-GridView
