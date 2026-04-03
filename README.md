@@ -18,5 +18,7 @@ The detection is based on failed logon events (Event ID 4625), using criteria su
 
 🚧 Work in progress
 
-[Preview] : [View Online Example](https://dakhama-mehdi.github.io/BruteForce-Blocker/Examples/attack_map.html)
+[Preview] : [View Online Example Brut-Force](https://dakhama-mehdi.github.io/BruteForce-Blocker/Examples/attack_map.html)
+
+[Preview] : [View Online Example Forensic](https://dakhama-mehdi.github.io/BruteForce-Blocker/Examples/Forensic_Mode.html)
 
