@@ -1,4 +1,4 @@
-# BruteForce-Blocker (block Brute Force Attack Attempts with Powershell)
+# Block Brute Force Attack Attempts with Powershell
 
 Block brute force attacks on Windows servers using native PowerShell and Windows Firewall.
 No agent. No SIEM. No external dependency.
