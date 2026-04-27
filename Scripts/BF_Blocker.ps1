@@ -62,8 +62,8 @@ $filterReason = @("User does not exist")
 $reasonThreshold = 4
 
 # Filter by Country 
-# List of trusted countries (will apply higher tolerance) Example: @("France")
-$trustedCountries = @("France")
+# List of trusted countries (will apply higher tolerance) Example: @("France","United State"), Find exactly name using BruteForce_Detector
+$trustedCountries = @("")
 # Higher threshold for trusted countries (to reduce false positives)
 $trustedThreshold = 15
 # Lower threshold for foreign countries (more aggressive protection)
