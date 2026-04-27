@@ -29,7 +29,6 @@ Lightweight, flexible, and designed to stand out from traditional solutions.
 - No centralized security tools
 
 ## Results
-
 Reduced brute force attacks by up to 97% on exposed Windows servers.
 
 ## Documentation
