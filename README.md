@@ -32,12 +32,12 @@ This script must be executed with sufficient privileges and a proper setup.
 > The script generates log files in this path.  
 > The directory can be modified directly in the script if needed.
 
-## Results
-Reduced brute force attacks by up to 97% on exposed Windows servers.
-
 ## Documentation
 [View How to use ](https://www.it-connect.tech/how-to-detect-and-block-brute-force-attacks-on-windows-server-with-powershell/#Blocking_Attacks_with_the_BruteForce-Blocker_Script)  
 [Settings Parameters](./Docs/Parameters.md)
+
+## Results
+Reduced brute force attacks by up to 97% on exposed Windows servers.
 
 ## Designed for real-world environments
 
