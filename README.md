@@ -9,8 +9,6 @@ Adaptive thresholds provide fine-grained control:
 - 5 for specific failure types (e.g., user does not exist)
 - History 24 hours to detect Slows attacks
 
-Lightweight, flexible, and designed to stand out from traditional solutions.
-
 ## Features
 
 - Detect brute force attacks using Event ID 4625
@@ -21,6 +19,16 @@ Lightweight, flexible, and designed to stand out from traditional solutions.
 - Works without Active Directory
 - Fully local execution (no cloud dependency)
 
+## Documentation
+[View How to use ](https://www.it-connect.tech/how-to-detect-and-block-brute-force-attacks-on-windows-server-with-powershell/#Blocking_Attacks_with_the_BruteForce-Blocker_Script)  
+[Settings Parameters](./Docs/Parameters.md)
+
+## Quick Installation
+
+1. Download the latest release: **Brute_Force.zip**
+2. Extract the archive
+3. Run `BF_install.ps1` as **Administrator**
+
 ## Install
 
 This script must be executed with sufficient privileges and a proper setup.
@@ -29,12 +37,7 @@ This script must be executed with sufficient privileges and a proper setup.
 - Create the following directory: `C:\temp\BruteForceBlocker\`
 - Place the script inside this directory
 
-> The script generates log files in this path.  
-> The directory can be modified directly in the script if needed.
-
-## Documentation
-[View How to use ](https://www.it-connect.tech/how-to-detect-and-block-brute-force-attacks-on-windows-server-with-powershell/#Blocking_Attacks_with_the_BruteForce-Blocker_Script)  
-[Settings Parameters](./Docs/Parameters.md)
+The directory can be modified directly in the script if needed.
 
 ## Results
 Reduced brute force attacks by up to 97% on exposed Windows servers.
