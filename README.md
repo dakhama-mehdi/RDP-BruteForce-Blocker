@@ -21,16 +21,6 @@ Lightweight, flexible, and designed to stand out from traditional solutions.
 - Works without Active Directory
 - Fully local execution (no cloud dependency)
 
-## Designed for real-world environments
-
-- Standalone Windows servers
-- Exposed RDP / IIS / RDS
-- No Active Directory
-- No centralized security tools
-
-## Results
-Reduced brute force attacks by up to 97% on exposed Windows servers.
-
 ## Install
 
 This script must be executed with sufficient privileges and a proper setup.
@@ -42,9 +32,19 @@ This script must be executed with sufficient privileges and a proper setup.
 > The script generates log files in this path.  
 > The directory can be modified directly in the script if needed.
 
+## Results
+Reduced brute force attacks by up to 97% on exposed Windows servers.
+
 ## Documentation
 [View How to use ](https://www.it-connect.tech/how-to-detect-and-block-brute-force-attacks-on-windows-server-with-powershell/#Blocking_Attacks_with_the_BruteForce-Blocker_Script)  
 [Settings Parameters](./Docs/Parameters.md)
+
+## Designed for real-world environments
+
+- Standalone Windows servers
+- Exposed RDP / IIS / RDS
+- No Active Directory
+- No centralized security tools
 
 ## Related Project
 
