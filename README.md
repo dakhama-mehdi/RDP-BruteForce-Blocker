@@ -31,6 +31,17 @@ Lightweight, flexible, and designed to stand out from traditional solutions.
 ## Results
 Reduced brute force attacks by up to 97% on exposed Windows servers.
 
+## Install
+
+This script must be executed with sufficient privileges and a proper setup.
+
+- Run the script as **SYSTEM** (via a scheduled task) or as **Administrator**
+- Create the following directory: `C:\temp\BruteForceBlocker\`
+- Place the script inside this directory
+
+> The script generates log files in this path.  
+> The directory can be modified directly in the script if needed.
+
 ## Documentation
 [View How to use ](https://www.it-connect.tech/how-to-detect-and-block-brute-force-attacks-on-windows-server-with-powershell/#Blocking_Attacks_with_the_BruteForce-Blocker_Script)  
 [Settings Parameters](./Docs/Parameters.md)
