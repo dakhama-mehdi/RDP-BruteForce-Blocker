@@ -21,7 +21,8 @@ Adaptive thresholds provide fine-grained control:
 
 ## Documentation
 [View How to use ](https://www.it-connect.tech/how-to-detect-and-block-brute-force-attacks-on-windows-server-with-powershell/#Blocking_Attacks_with_the_BruteForce-Blocker_Script)  
-[Settings Parameters](./Docs/Parameters.md)
+[Settings Parameters](./Docs/Parameters.md)  
+[Install](./Docs/Install.md)
 
 ## Quick Installation
 
